@@ -1,0 +1,42 @@
+@import "../../../libs/css/bootstrap/theme/variables";
+
+/* Color Variables */
+@theme-navyblue: @brand-primary;
+@theme-green: @brand-success;
+@theme-skyblue: @brand-info;
+@theme-orange: @brand-warning;
+@theme-red: @brand-danger;
+
+// from variables import above
+//@gray-base:              #000;
+//@gray-darker:            lighten(@gray-base, 13.5%); // #222
+//@gray-dark:              #303030;   // #333
+//@gray:                   #464545;
+//@gray-light:             #999;   // #999
+//@gray-lighter:           #EBEBEB; // #eee
+
+/* Sandbox CSS */
+html, body {
+  height: 100%;
+}
+
+app {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+header {
+  flex: 0 1 auto;
+  max-height: 80px;             // Chrome bug fix, may re-visit
+}
+
+main {
+  flex: 1 1 auto;
+  position: relative;
+  height: calc(100% - 80px);    / Chrome bug fix, may re-visit
+}
+
+footer {
+  flex: 0 1 40px;
+}

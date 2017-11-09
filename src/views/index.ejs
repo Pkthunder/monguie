@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <base href="/">
+
+    <!-- Stylesheets -->
+    <link href="libs/css/bootstrap/theme/darkly.css" rel="stylesheet">
+    <link href="libs/css/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+
+    <!-- JSPM/SystemJS configurations -->
+    <script type="text/javascript" src="static/modules/packages/system.js"></script>
+    <script type="text/javascript" src="static/modules/jspm.config.js"></script>
+
+<% if (/prod/.test(ENV)) { %>
+    <!-- Includes Angular 4.x and all required dependencies (only used in production to increase load times) -->
+    <script src="static/modules/bundles/vendor.js"></script>
+<% } else { %>
+    <script src="static/modules/bundles/vendor-dev.js"></script>
+<% } %>
+
+    <style>
+        app {
+            text-align: center;
+            margin: 0 auto;
+        }
+    </style>
+
+    <title>ng4 Boilerplate</title>
+</head>
+<body>
+
+    <app>Loading...</app>
+
+<% if (/prod/.test(ENV)) { %>
+    <script src="static/js/app.bundle.js"></script>
+    <script>
+        System.import('app/main').catch(console.error.bind(console));
+    </script>
+<% } else { %>
+    <script>
+        System.import('app/main').catch(console.error.bind(console));
+    </script>
+<% } %>
+
+</body>
+</html>
