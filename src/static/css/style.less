@@ -1,19 +1,8 @@
-@import "../../../libs/css/bootstrap/theme/variables";
+@import "../../../libs/css/bootstrap/css/variables";
 
-/* Color Variables */
-@theme-navyblue: @brand-primary;
-@theme-green: @brand-success;
-@theme-skyblue: @brand-info;
-@theme-orange: @brand-warning;
-@theme-red: @brand-danger;
-
-// from variables import above
-//@gray-base:              #000;
-//@gray-darker:            lighten(@gray-base, 13.5%); // #222
-//@gray-dark:              #303030;   // #333
-//@gray:                   #464545;
-//@gray-light:             #999;   // #999
-//@gray-lighter:           #EBEBEB; // #eee
+.clickable {
+  cursor: pointer;
+}
 
 /* Sandbox CSS */
 html, body {
@@ -34,7 +23,47 @@ header {
 main {
   flex: 1 1 auto;
   position: relative;
-  height: calc(100% - 80px);    / Chrome bug fix, may re-visit
+  height: calc(100% - 80px);    // Chrome bug fix, may re-visit
+}
+
+main section {
+  width: 80%;
+  margin: 0 auto;
+}
+
+main > #results > ul {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+main > #results > ul > li {
+  padding: 6px 0;
+}
+
+result .count-badge {
+  padding: 2px 4px;
+  background-color: @brand-info;
+  border-radius: 4px;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+result ul.result-items {
+  padding-left: 20px;
+  margin-left: 10px;
+  list-style: none;
+}
+
+result ul.result-items .key {
+  color: lighten(@brand-danger, 15%);
+  //padding-right: 8px;
+}
+
+result ul.result-items .value {
+  padding-left: 12px;
 }
 
 footer {

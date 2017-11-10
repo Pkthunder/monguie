@@ -1,5 +1,15 @@
 <header></header>
 <main>
     <p>Hello again {{ name }}!</p>
+    <section id="results">
+        <ul>
+            <li *ngFor="let doc of results">
+                <result [doc]="doc"></result>
+            </li>
+        </ul>
+    </section>
+    <section style="text-align:left">
+        <pre>{{ results | json }}</pre>
+    </section>
 </main>
 <footer></footer>

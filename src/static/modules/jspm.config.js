@@ -16,13 +16,14 @@ System.config({
       "main": "main.js",
       "defaultExtension": "js",
       "format": "system",
-      // "map": {
-      //   "Api": "./api.js",
+      "map": {
+        "Api": "./api.js",
+        "Results": "./results/index.js"
       //   "ShareDB": "./sharedb.js",
       //   "Editor": "./editor/index.js",
       //   "Board": "./board/index.js",
       //   "Console": "./console/index.js"
-      // },
+      },
       "meta": {
         "*.js": {
           "loader": "ts"

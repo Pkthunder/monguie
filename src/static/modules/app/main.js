@@ -10,6 +10,10 @@ import { HttpModule } from 'angular-http';
 import { FormsModule } from 'angular-forms';
 import { BrowserModule } from 'angular-platform-browser';
 
+// custom modules
+import { ApiServiceProvider } from 'Api';
+import { ResultsComponent } from 'Results';
+
 /**
  * All code below is boilerplate Angular++ code
  *
@@ -22,13 +26,20 @@ import { BrowserModule } from 'angular-platform-browser';
 })
 export class AppComponent {
 
-    counter = 0;
     name = 'Agent: Codename Duchess';
+    results = [];
 
-    constructor () {}
+    constructor (http) {
+        this.http = http;
+    }
 
-    ngOnInit () {}
+    ngOnInit () {
+        this.http.getData().then( data => this.results = data);
+    }
 }
+AppComponent.parameters = [
+    [ new Inject('ApiService') ]
+];
 
 // Example of injecting a service
 // AppComponent.parameters = [
@@ -38,9 +49,9 @@ export class AppComponent {
 // taken from docs (based on app.module.ts)
 @NgModule({
     imports:        [ BrowserModule, HttpModule, FormsModule ],
-    declarations:   [ AppComponent ],
+    declarations:   [ AppComponent, ResultsComponent ],
     bootstrap:      [ AppComponent ],
-    providers:      [  ]
+    providers:      [ ApiServiceProvider ]
 })
 export class AppModule {}
 
