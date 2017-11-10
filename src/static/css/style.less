@@ -57,13 +57,43 @@ result ul.result-items {
   list-style: none;
 }
 
-result ul.result-items .key {
-  color: lighten(@brand-danger, 15%);
-  //padding-right: 8px;
+result ul.result-items > li {
+  display: table-row;
 }
 
-result ul.result-items .value {
-  padding-left: 12px;
+result ul.result-items > li > span.result-key,
+result ul.result-items > li > span.result-value {
+  display: table-cell;
+}
+
+result ul.result-items .result-key {
+  color: @brand-danger;
+  padding-right: 25px;
+}
+
+result ul.result-items .result-value.result-string {
+  color: @brand-success;
+}
+result ul.result-items .result-value.result-string::before,
+result ul.result-items .result-value.result-string::after {
+  content: '"';
+}
+
+result ul.result-items .result-value.result-number {
+  color: @brand-primary;
+}
+
+result ul.result-items .result-value.result-boolean {
+  color: @brand-warning;
+  font-weight: bold;
+}
+
+result ul.result-items .result-separator {
+  color: #000000;
+}
+
+result ul.result-items .result-value {
+  //padding-left: 12px;
 }
 
 footer {

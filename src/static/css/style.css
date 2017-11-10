@@ -46,11 +46,33 @@ result ul.result-items {
   margin-left: 10px;
   list-style: none;
 }
-result ul.result-items .key {
-  color: #e7908e;
+result ul.result-items > li {
+  display: table-row;
 }
-result ul.result-items .value {
-  padding-left: 12px;
+result ul.result-items > li > span.result-key,
+result ul.result-items > li > span.result-value {
+  display: table-cell;
+}
+result ul.result-items .result-key {
+  color: #d9534f;
+  padding-right: 25px;
+}
+result ul.result-items .result-value.result-string {
+  color: #5cb85c;
+}
+result ul.result-items .result-value.result-string::before,
+result ul.result-items .result-value.result-string::after {
+  content: '"';
+}
+result ul.result-items .result-value.result-number {
+  color: #337ab7;
+}
+result ul.result-items .result-value.result-boolean {
+  color: #f0ad4e;
+  font-weight: bold;
+}
+result ul.result-items .result-separator {
+  color: #000000;
 }
 footer {
   flex: 0 1 40px;

@@ -1,23 +1,17 @@
 <div [ngSwitch]="expand">
     <ng-container *ngSwitchCase="false">
-        <!--<button class="btn btn-primary btn-sm" (click)="expand = true">-->
-            <!--<i class="fa fa-fw fa-plus"></i>-->
-        <!--</button>-->
         <i class="fa fa-fw fa-caret-right clickable" (click)="expand = true"></i>
         <span class="clickable" (click)="expand = true">{{ display }}</span>
         <span class="count-badge">{{ keys.length }} items</span>
     </ng-container>
     <ng-container *ngSwitchCase="true">
-        <!--<button class="btn btn-danger btn-sm" (click)="expand = false">-->
-            <!--<i class="fa fa-fw fa-minus"></i>-->
-        <!--</button>-->
         <i class="fa fa-fw fa-caret-down clickable" (click)="expand = false"></i>
         <span>{{ '{' }}</span>
         <ul class="result-items">
-            <li *ngFor="let key of keys">
-                <span class="key">{{ key }}</span>
-                <span class="separator"> : </span>
-                <span class="value">{{ doc[key] }}</span>
+            <li class="result-row" *ngFor="let key of keys">
+                <span class="result-key">{{ key }}<span class="result-separator">:</span></span>
+                <!--<span class="result-value">{{ doc[key] }}</span>-->
+                <result-value [result]="doc[key]"></result-value>
             </li>
         </ul>
         <span>{{ '}' }}</span>
