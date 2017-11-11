@@ -42,6 +42,22 @@ main > #results > ul > li {
   padding: 6px 0;
 }
 
+result .result-preview.preview-object::before {
+  content: "{ ";
+}
+
+result .result-preview.preview-object::after {
+  content: " ... }";
+}
+
+result .result-preview.preview-array::before {
+  content: "[ ";
+}
+
+result .result-preview.preview-array::after {
+  content: " ... ]";
+}
+
 result .count-badge {
   padding: 2px 4px;
   background-color: @brand-info;
@@ -67,12 +83,12 @@ result ul.result-items > li > span.result-value {
 }
 
 result ul.result-items .result-key {
-  color: @brand-danger;
+  color: darken(@brand-danger, 10%);
   padding-right: 25px;
 }
 
 result ul.result-items .result-value.result-string {
-  color: @brand-success;
+  color: darken(@brand-success, 10%);
 }
 result ul.result-items .result-value.result-string::before,
 result ul.result-items .result-value.result-string::after {
@@ -80,11 +96,11 @@ result ul.result-items .result-value.result-string::after {
 }
 
 result ul.result-items .result-value.result-number {
-  color: @brand-primary;
+  color:@brand-primary;
 }
 
 result ul.result-items .result-value.result-boolean {
-  color: @brand-warning;
+  color: darken(@brand-warning, 5%);
   font-weight: bold;
 }
 

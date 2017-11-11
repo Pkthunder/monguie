@@ -33,6 +33,18 @@ main > #results > ul {
 main > #results > ul > li {
   padding: 6px 0;
 }
+result .result-preview.preview-object::before {
+  content: "{ ";
+}
+result .result-preview.preview-object::after {
+  content: " ... }";
+}
+result .result-preview.preview-array::before {
+  content: "[ ";
+}
+result .result-preview.preview-array::after {
+  content: " ... ]";
+}
 result .count-badge {
   padding: 2px 4px;
   background-color: #5bc0de;
@@ -54,11 +66,11 @@ result ul.result-items > li > span.result-value {
   display: table-cell;
 }
 result ul.result-items .result-key {
-  color: #d9534f;
+  color: #c9302c;
   padding-right: 25px;
 }
 result ul.result-items .result-value.result-string {
-  color: #5cb85c;
+  color: #449d44;
 }
 result ul.result-items .result-value.result-string::before,
 result ul.result-items .result-value.result-string::after {
@@ -68,7 +80,7 @@ result ul.result-items .result-value.result-number {
   color: #337ab7;
 }
 result ul.result-items .result-value.result-boolean {
-  color: #f0ad4e;
+  color: #eea236;
   font-weight: bold;
 }
 result ul.result-items .result-separator {

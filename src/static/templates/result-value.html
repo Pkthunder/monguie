@@ -1,0 +1,9 @@
+<ng-container [ngSwitch]="type">
+    <span class="result-value result-object" *ngSwitchCase="'object'">
+        <result [doc]="result"></result>
+    </span>
+    <span class="result-value result-array" *ngSwitchCase="'array'">
+        <result [doc]="result"></result>
+    </span>
+    <span class="result-value" *ngSwitchDefault [ngClass]="classes">{{ result }}</span>
+</ng-container>

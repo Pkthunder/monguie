@@ -11,17 +11,25 @@ export class ResultComponent {
     constructor () {}
 
     ngOnInit () {
-        console.log(this.doc);
+        const isArray = this.doc instanceof Array;
 
-        this.display = `{ _id: ${ this.doc._id }, ... }`;
         this.keys = Object.keys(this.doc);
+        this.preview = '';
+        this.isArray = isArray;
+
+        this.keys.slice(0, 3).map(key => {
+            if (!isArray) {
+                this.preview += `${ key }:  `
+            }
+
+            this.preview += `${ this.doc[key] }, `;
+        });
     }
 }
 
 @Component({
     selector: 'result-value',
-    //templateUrl: 'static/templates/results-value.html'
-    template: `<span class="result-value" [ngClass]="classes">{{ result }}</span>`
+    templateUrl: 'static/templates/result-value.html'
 })
 export class ResultValueComponent {
     @Input('result') result;
@@ -29,12 +37,14 @@ export class ResultValueComponent {
     constructor () {}
 
     ngOnInit () {
-        this.type = typeof this.result;
+        let type = typeof this.result;
+        this.type = (type === 'object' && this.result instanceof Array) ? 'array' : type;
         this.classes = {
             'result-string': this.type == 'string',
             'result-number': this.type == 'number',
-            'result-boolean': this.type == 'boolean'
-            //, 'result-string': 'type'
+            'result-boolean': this.type == 'boolean',
+            'result-array': this.type == 'array',
+            'result-object': this.type == 'object'
         };
     }
 }

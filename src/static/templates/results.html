@@ -1,19 +1,18 @@
-<div [ngSwitch]="expand">
+<ng-container [ngSwitch]="expand">
     <ng-container *ngSwitchCase="false">
         <i class="fa fa-fw fa-caret-right clickable" (click)="expand = true"></i>
-        <span class="clickable" (click)="expand = true">{{ display }}</span>
+        <span class="result-preview clickable" [ngClass]="{'preview-array': isArray, 'preview-object': !isArray}" (click)="expand = true">{{ preview }}</span>
         <span class="count-badge">{{ keys.length }} items</span>
     </ng-container>
     <ng-container *ngSwitchCase="true">
         <i class="fa fa-fw fa-caret-down clickable" (click)="expand = false"></i>
-        <span>{{ '{' }}</span>
+        <span>{{ isArray ? '[' : '{' }}</span>
         <ul class="result-items">
             <li class="result-row" *ngFor="let key of keys">
                 <span class="result-key">{{ key }}<span class="result-separator">:</span></span>
-                <!--<span class="result-value">{{ doc[key] }}</span>-->
                 <result-value [result]="doc[key]"></result-value>
             </li>
         </ul>
-        <span>{{ '}' }}</span>
+        <span>{{ isArray ? ']' : '}' }}</span>
     </ng-container>
-</div>
+</ng-container>
