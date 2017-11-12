@@ -12,7 +12,7 @@ import { BrowserModule } from 'angular-platform-browser';
 
 // custom modules
 import { ApiServiceProvider } from 'Api';
-import { ResultComponent, ResultValueComponent } from 'Results';
+import { ResultComponent, AttrDisplayComponent } from 'Results';
 
 /**
  * All code below is boilerplate Angular++ code
@@ -49,7 +49,7 @@ AppComponent.parameters = [
 // taken from docs (based on app.module.ts)
 @NgModule({
     imports:        [ BrowserModule, HttpModule, FormsModule ],
-    declarations:   [ AppComponent, ResultComponent, ResultValueComponent ],
+    declarations:   [ AppComponent, ResultComponent, AttrDisplayComponent ],
     bootstrap:      [ AppComponent ],
     providers:      [ ApiServiceProvider ]
 })

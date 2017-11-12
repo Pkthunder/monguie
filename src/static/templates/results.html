@@ -1,16 +1,15 @@
 <ng-container [ngSwitch]="expand">
     <ng-container *ngSwitchCase="false">
-        <i class="fa fa-fw fa-caret-right clickable" (click)="expand = true"></i>
+        <i class="fa fa-fw fa-lg fa-caret-right clickable" (click)="expand = true"></i>
         <span class="result-preview clickable" [ngClass]="{'preview-array': isArray, 'preview-object': !isArray}" (click)="expand = true">{{ preview }}</span>
         <span class="count-badge">{{ keys.length }} items</span>
     </ng-container>
     <ng-container *ngSwitchCase="true">
-        <i class="fa fa-fw fa-caret-down clickable" (click)="expand = false"></i>
+        <i class="fa fa-fw fa-lg fa-caret-down clickable" (click)="expand = false"></i>
         <span>{{ isArray ? '[' : '{' }}</span>
         <ul class="result-items">
-            <li class="result-row" *ngFor="let key of keys">
-                <span class="result-key">{{ key }}<span class="result-separator">:</span></span>
-                <result-value [result]="doc[key]"></result-value>
+            <li class="result-row" *ngFor="let key of keys" attr-display [key]="key" [result]="doc[key]">
+                <!-- attr-display is a component which fills in this <li> -->
             </li>
         </ul>
         <span>{{ isArray ? ']' : '}' }}</span>

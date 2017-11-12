@@ -7,14 +7,13 @@ import { Component, Input, Inject } from 'angular-core';
 export class ResultComponent {
     @Input('doc') doc;
     expand = false;
+    preview = '';
 
     constructor () {}
 
     ngOnInit () {
         const isArray = this.doc instanceof Array;
-
         this.keys = Object.keys(this.doc);
-        this.preview = '';
         this.isArray = isArray;
 
         this.keys.slice(0, 3).map(key => {
@@ -28,23 +27,28 @@ export class ResultComponent {
 }
 
 @Component({
-    selector: 'result-value',
-    templateUrl: 'static/templates/result-value.html'
+    selector: '[attr-display]',
+    templateUrl: 'static/templates/attr-display.html'
 })
-export class ResultValueComponent {
+export class AttrDisplayComponent {
+    @Input('key') key;
     @Input('result') result;
+    hovered = false; // TODO: use this for mouseover effects
+
+    static RESULT_CLASSES = {
+        'string': 'result-string',
+        'number': 'result-number',
+        'boolean': 'result-boolean',
+        'array': 'result-array',
+        'object': 'result-object'
+    };
 
     constructor () {}
 
     ngOnInit () {
         let type = typeof this.result;
         this.type = (type === 'object' && this.result instanceof Array) ? 'array' : type;
-        this.classes = {
-            'result-string': this.type == 'string',
-            'result-number': this.type == 'number',
-            'result-boolean': this.type == 'boolean',
-            'result-array': this.type == 'array',
-            'result-object': this.type == 'object'
-        };
+
+       this.resultClass = AttrDisplayComponent.RESULT_CLASSES[this.type];
     }
 }

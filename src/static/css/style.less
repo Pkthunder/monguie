@@ -42,6 +42,13 @@ main > #results > ul > li {
   padding: 6px 0;
 }
 
+result i.fa.fa-caret-up:hover,
+result i.fa.fa-caret-down:hover,
+result i.fa.fa-caret-right:hover,
+result i.fa.fa-caret-left:hover {
+  color: @brand-primary;
+}
+
 result .result-preview.preview-object::before {
   content: "{ ";
 }
@@ -68,23 +75,28 @@ result .count-badge {
 }
 
 result ul.result-items {
+  //display: table;
   padding-left: 20px;
   margin-left: 10px;
   list-style: none;
 }
 
-result ul.result-items > li {
+result ul.result-items > li.result-row  {
   display: table-row;
 }
 
-result ul.result-items > li > span.result-key,
-result ul.result-items > li > span.result-value {
+result ul.result-items > li.result-row > span.result-key,
+result ul.result-items > li.result-row > span.result-value {
   display: table-cell;
+}
+
+result ul.result-items > li.result-row.hovered span {
+  background-color: aliceblue;
 }
 
 result ul.result-items .result-key {
   color: darken(@brand-danger, 10%);
-  padding-right: 25px;
+  padding-right: 12px;
 }
 
 result ul.result-items .result-value.result-string {
@@ -96,7 +108,7 @@ result ul.result-items .result-value.result-string::after {
 }
 
 result ul.result-items .result-value.result-number {
-  color:@brand-primary;
+  color: @brand-primary;
 }
 
 result ul.result-items .result-value.result-boolean {
