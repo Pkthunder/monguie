@@ -1,7 +1,9 @@
 <ng-container [ngSwitch]="expand">
     <ng-container *ngSwitchCase="false">
         <i class="fa fa-fw fa-lg fa-caret-right clickable" (click)="expand = true"></i>
-        <span class="result-preview clickable" [ngClass]="{'preview-array': isArray, 'preview-object': !isArray}" (click)="expand = true">{{ preview }}</span>
+        <span class="result-preview clickable" [ngClass]="{'preview-array': isArray, 'preview-object': !isArray}" (click)="expand = true">
+            <preview-display [preview]="doc"></preview-display>
+        </span>
         <span class="count-badge">{{ keys.length }} items</span>
     </ng-container>
     <ng-container *ngSwitchCase="true">

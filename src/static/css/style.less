@@ -1,5 +1,8 @@
 @import "../../../libs/css/bootstrap/css/variables";
 
+@standard-font: #333;
+@string-green: darken(@brand-success, 10%);
+
 .clickable {
   cursor: pointer;
 }
@@ -54,7 +57,7 @@ result .result-preview.preview-object::before {
 }
 
 result .result-preview.preview-object::after {
-  content: " ... }";
+  content: " }";
 }
 
 result .result-preview.preview-array::before {
@@ -62,7 +65,27 @@ result .result-preview.preview-array::before {
 }
 
 result .result-preview.preview-array::after {
-  content: " ... ]";
+  content: " ]";
+}
+
+result .result-preview preview-display .preview-string {
+  color: darken(@brand-success, 10%);
+}
+
+result .result-preview preview-display .preview-string > span::before,
+result .result-preview preview-display .preview-string > span::after {
+  content: '"';
+  color: darken(@brand-success, 10%);
+}
+
+result .result-preview preview-display .addComma::after {
+  color: @standard-font;
+  content: ',';
+}
+
+result .result-preview preview-display .addEllipsis::after {
+  color: @standard-font;
+  content: ', ... ';
 }
 
 result .count-badge {
@@ -72,10 +95,10 @@ result .count-badge {
   color: white;
   font-size: 10px;
   font-weight: bold;
+  vertical-align: middle;
 }
 
 result ul.result-items {
-  //display: table;
   padding-left: 20px;
   margin-left: 10px;
   list-style: none;
@@ -90,28 +113,36 @@ result ul.result-items > li.result-row > span.result-value {
   display: table-cell;
 }
 
-result ul.result-items > li.result-row.hovered span {
-  background-color: aliceblue;
-}
-
 result ul.result-items .result-key {
   color: darken(@brand-danger, 10%);
+  padding: 2px 8px;
   padding-right: 12px;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-bottom: 1px solid transparent;
 }
 
-result ul.result-items .result-value.result-string {
-  color: darken(@brand-success, 10%);
+result ul.result-items .result-row .result-value .result-display {
+  display: table-cell;
+  padding: 3px 8px;
+  border-top: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-bottom: 1px solid transparent;
 }
-result ul.result-items .result-value.result-string::before,
-result ul.result-items .result-value.result-string::after {
+
+result ul.result-items .result-value .result-string {
+  color: @string-green;
+}
+result ul.result-items .result-value .result-string::before,
+result ul.result-items .result-value .result-string::after {
   content: '"';
 }
 
-result ul.result-items .result-value.result-number {
+result ul.result-items .result-value .result-number {
   color: @brand-primary;
 }
 
-result ul.result-items .result-value.result-boolean {
+result ul.result-items .result-value .result-boolean {
   color: darken(@brand-warning, 5%);
   font-weight: bold;
 }
@@ -122,6 +153,29 @@ result ul.result-items .result-separator {
 
 result ul.result-items .result-value {
   //padding-left: 12px;
+}
+
+result ul.result-items .result-row:hover .result-key {
+  background-color: lighten(@brand-info, 35%);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-color: lighten(@brand-info, 25%);
+  border-left-color: lighten(@brand-info, 25%);
+  border-bottom-color: lighten(@brand-info, 25%);
+}
+
+result ul.result-items .result-row:hover .result-value .result-display {
+  background-color: lighten(@brand-info, 35%);
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-top-color: lighten(@brand-info, 25%);
+  border-right-color: lighten(@brand-info, 25%);
+  border-bottom-color: lighten(@brand-info, 25%);
+}
+
+result ul.result-items .result-value result ul.result-items .result-row .result-key,
+result ul.result-items .result-value result ul.result-items .result-row .result-value .result-display  {
+  border: none;
 }
 
 footer {

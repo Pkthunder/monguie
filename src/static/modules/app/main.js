@@ -12,7 +12,7 @@ import { BrowserModule } from 'angular-platform-browser';
 
 // custom modules
 import { ApiServiceProvider } from 'Api';
-import { ResultComponent, AttrDisplayComponent } from 'Results';
+import { ResultComponent, AttrDisplayComponent, PreviewDisplayComponent } from 'Results';
 
 /**
  * All code below is boilerplate Angular++ code
@@ -34,7 +34,10 @@ export class AppComponent {
     }
 
     ngOnInit () {
-        this.http.getData().then( data => this.results = data);
+        this.http.getData().then( data => {
+            console.log(data);
+            return this.results = data
+        });
     }
 }
 AppComponent.parameters = [
@@ -49,7 +52,7 @@ AppComponent.parameters = [
 // taken from docs (based on app.module.ts)
 @NgModule({
     imports:        [ BrowserModule, HttpModule, FormsModule ],
-    declarations:   [ AppComponent, ResultComponent, AttrDisplayComponent ],
+    declarations:   [ AppComponent, ResultComponent, AttrDisplayComponent, PreviewDisplayComponent ],
     bootstrap:      [ AppComponent ],
     providers:      [ ApiServiceProvider ]
 })

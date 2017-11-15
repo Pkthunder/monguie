@@ -1,10 +1,10 @@
 <span class="result-key">{{ key }}<span class="result-separator">:</span></span>
-<ng-container [ngSwitch]="type">
-    <span class="result-value result-object" *ngSwitchCase="'object'">
+<span class="result-value" [ngSwitch]="type">
+    <span class="result-display result-object" *ngSwitchCase="'object'">
         <result [doc]="result"></result>
     </span>
-    <span class="result-value result-array" *ngSwitchCase="'array'">
+    <span class="result-display result-array" *ngSwitchCase="'array'">
         <result [doc]="result"></result>
     </span>
-    <span class="result-value" *ngSwitchDefault [ngClass]="resultClass">{{ result }}</span>
-</ng-container>
+    <span class="result-display result-default" *ngSwitchDefault [ngClass]="resultClass">{{ result }}</span>
+</span>

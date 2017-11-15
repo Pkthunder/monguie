@@ -1,0 +1,10 @@
+<ng-container [ngSwitch]="isArray">
+    <ng-container *ngSwitchCase="true">
+        <ng-container *ngFor="let p of preview.slice(0, 3); let $last = last;">
+            <span [ngClass]="typeClass(p, $last)"><span>{{ p }}</span></span>
+        </ng-container>
+    </ng-container>
+    <span *ngSwitchCase="false">
+        Object
+    </span>
+</ng-container>
